@@ -4,6 +4,7 @@ import "../App.css";
 import { useAuthContext } from "../hooks/useAuthContext";
 import SiderBar from "./siderbar/Sidebar";
 import NavBar from "./navbar/Navbar";
+import OnlineUsers from "./onlineUsers/OnlineUsers";
 
 export default function Layout() {
   const { authIsReady, user } = useAuthContext();
@@ -17,6 +18,7 @@ export default function Layout() {
             <NavBar />
             <Outlet />
           </div>
+          {user && <OnlineUsers />}
         </>
       )}
     </div>
