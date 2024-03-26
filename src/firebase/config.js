@@ -1,22 +1,24 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, Timestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const API_KEY = import.meta.env.VITE_FIREBASE_API_KEY;
 
 const firebaseConfig = {
   apiKey: API_KEY,
-  authDomain: "chat-nextjs-app-b724c.firebaseapp.com",
-  projectId: "chat-nextjs-app-b724c",
-  storageBucket: "chat-nextjs-app-b724c.appspot.com",
-  messagingSenderId: "207834522848",
-  appId: "1:207834522848:web:98c930125a03a587125c85",
+  authDomain: "pm-reactjs-app.firebaseapp.com",
+  projectId: "pm-reactjs-app",
+  storageBucket: "pm-reactjs-app.appspot.com",
+  messagingSenderId: "1045201456909",
+  appId: "1:1045201456909:web:d5297ce58d34fec863ea44",
 };
 
 const app = initializeApp(firebaseConfig);
 
 const projectFirestore = getFirestore(app);
 const projectAuth = getAuth(app);
+const projectStorage = getStorage(app);
 const timestamp = new Timestamp();
 
-export { projectFirestore, projectAuth };
+export { projectFirestore, projectAuth, projectStorage, timestamp };
