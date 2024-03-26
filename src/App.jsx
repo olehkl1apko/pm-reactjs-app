@@ -7,23 +7,27 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Project from "./pages/project/Project";
 import ErrorPage from "./pages/error/Error";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [
-      { index: true, element: <Dashboard /> },
-      { path: "/create", element: <Create /> },
-      { path: "/projects/:id", element: <Project /> },
-      { path: "/login", element: <Login /> },
-      { path: "/signup", element: <Signup /> },
-    ],
-  },
-]);
+import { useAuthContext } from "./hooks/useAuthContext";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
+  const { user } = useAuthContext();
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <ErrorPage />,
+      children: [
+        { index: true, element: user && <Dashboard /> },
+        { path: "/create", element: user && <Create /> },
+        { path: "/projects/:id", element: user && <Project /> },
+        { path: "/login", element: !user && <Login /> },
+        { path: "/signup", element: !user && <Signup /> },
+      ],
+    },
+  ]);
+
   return <RouterProvider router={router} />;
 }
 
