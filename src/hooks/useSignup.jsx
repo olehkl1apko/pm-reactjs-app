@@ -1,8 +1,23 @@
 import { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {
+  collection,
+  onSnapshot,
+  query,
+  addDoc,
+  serverTimestamp,
+  where,
+  getDocs,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 
-import { projectAuth, projectStorage } from "../firebase/config";
+import {
+  projectAuth,
+  projectStorage,
+  projectFirestore,
+} from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
 
 export const useSignup = () => {
@@ -54,6 +69,15 @@ export const useSignup = () => {
 
             // dispatch login action
             dispatch({ type: "LOGIN", payload: res.user });
+
+            // create a user document
+            const userDocRef = doc(projectFirestore, "users", res.user.uid);
+            await setDoc(userDocRef, {
+              online: true,
+              displayName,
+              photoURL: downloadURL,
+            });
+
             setIsPending(false);
             setError(null);
           });
