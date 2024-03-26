@@ -8,7 +8,6 @@ import Signup from "./pages/signup/Signup";
 import Project from "./pages/project/Project";
 import ErrorPage from "./pages/error/Error";
 import { useAuthContext } from "./hooks/useAuthContext";
-import Navbar from "./components/navbar/Navbar";
 
 function App() {
   const { user } = useAuthContext();
