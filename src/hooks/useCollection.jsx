@@ -46,7 +46,7 @@ export const useCollection = (nameCollection, _query, _orderBy) => {
     );
 
     return () => unsubscribe();
-  }, [collection, query, orderBy]);
+  }, [nameCollection, query, orderBy]);
 
   return { documents, error };
 };
