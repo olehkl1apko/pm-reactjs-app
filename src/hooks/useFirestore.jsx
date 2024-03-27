@@ -104,10 +104,13 @@ export const useFirestore = (nameCollection) => {
     try {
       const documentRef = doc(projectFirestore, nameCollection, id);
       const updatedDocument = await updateDoc(documentRef, updates);
-      dispatchIfMounted({ type: "UPDATED_DOCUMENT", payload: updatedDocument });
+      dispatchIfNotCancelled({
+        type: "UPDATED_DOCUMENT",
+        payload: updatedDocument,
+      });
       return updatedDocument;
     } catch (error) {
-      dispatchIfMounted({ type: "ERROR", payload: error });
+      dispatchIfNotCancelled({ type: "ERROR", payload: error });
       return null;
     }
   };
