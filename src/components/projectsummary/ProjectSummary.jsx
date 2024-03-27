@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-import Avatar from "../../components/avatar/Avatar";
+import "./ProjectSummary.css";
+import { Avatar } from "../";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useAuthContext } from "../../hooks/useAuthContext";
 

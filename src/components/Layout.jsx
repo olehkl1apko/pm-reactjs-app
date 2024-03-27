@@ -1,10 +1,8 @@
 import { Outlet } from "react-router-dom";
 
 import "../App.css";
+import { NavBar, OnlineUsers, SideBar } from ".";
 import { useAuthContext } from "../hooks/useAuthContext";
-import SiderBar from "./siderbar/Sidebar";
-import NavBar from "./navbar/Navbar";
-import OnlineUsers from "./onlineUsers/OnlineUsers";
 
 export default function Layout() {
   const { authIsReady, user } = useAuthContext();
@@ -13,7 +11,7 @@ export default function Layout() {
     <div className="App">
       {authIsReady && (
         <>
-          {user && <SiderBar />}
+          {user && <SideBar />}
           <div className="container">
             <NavBar />
             <Outlet />

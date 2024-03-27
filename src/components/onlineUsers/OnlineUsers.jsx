@@ -1,10 +1,7 @@
 import { useCollection } from "../../hooks/useCollection";
 
-// components
-import Avatar from "../avatar/Avatar";
-
-// styles
 import "./OnlineUsers.css";
+import { Avatar } from "../";
 
 export default function OnlineUsers() {
   const { isPending, error, documents } = useCollection("users");

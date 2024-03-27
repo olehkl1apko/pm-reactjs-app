@@ -1,13 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import {
-  collection,
-  onSnapshot,
-  query,
-  addDoc,
-  serverTimestamp,
-  where,
-  getDocs,
-} from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 
 import { projectFirestore } from "../firebase/config";
 

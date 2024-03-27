@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-// components
 import "./Sidebar.css";
-import Avatar from "../avatar/Avatar";
+import { Avatar } from "../";
 import DashboardIcon from "../../assets/dashboard_icon.svg";
 import AddIcon from "../../assets/add_icon.svg";
 
-export default function Sidebar() {
+export default function SideBar() {
   const { user } = useAuthContext();
 
   return (

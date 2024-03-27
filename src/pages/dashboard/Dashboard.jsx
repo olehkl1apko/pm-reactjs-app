@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-import "./Dashboard.css";
-import ProjectList from "../../components/projectlist/ProjectList";
-import ProjectFilter from "./ProjectFilter";
+import { ProjectFilter, ProjectList } from "../../components";
+import { filterList } from "../../constants";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
@@ -18,9 +17,9 @@ export default function Dashboard() {
   const projects = documents
     ? documents.filter((document) => {
         switch (filter) {
-          case "all":
+          case filterList[0]:
             return true;
-          case "mine":
+          case filterList[1]:
             let assignedToMe = false;
             document.assignedUsersList.forEach((u) => {
               if (u.id === user.uid) {
@@ -28,10 +27,10 @@ export default function Dashboard() {
               }
             });
             return assignedToMe;
-          case "development":
-          case "design":
-          case "sales":
-          case "marketing":
+          case filterList[2]:
+          case filterList[3]:
+          case filterList[4]:
+          case filterList[5]:
             return document.category === filter;
           default:
             return true;

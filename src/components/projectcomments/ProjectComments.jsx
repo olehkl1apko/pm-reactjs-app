@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 
+import "./ProjectComments.css";
+import { Avatar } from "../";
 import { Timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
-import Avatar from "../../components/avatar/Avatar";
 
 export default function ProjectComments({ project }) {
   const { user } = useAuthContext();

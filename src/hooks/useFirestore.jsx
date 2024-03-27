@@ -1,6 +1,4 @@
 import { useReducer, useEffect, useState } from "react";
-
-import { projectFirestore, Timestamp } from "../firebase/config";
 import {
   setDoc,
   deleteDoc,
@@ -8,6 +6,8 @@ import {
   doc,
   collection,
 } from "firebase/firestore";
+
+import { projectFirestore, Timestamp } from "../firebase/config";
 
 let initialState = {
   document: null,
@@ -74,10 +74,10 @@ export const useFirestore = (nameCollection) => {
       });
       dispatchIfNotCancelled({
         type: "ADDED_DOCUMENT",
-        document: addedDocument,
+        payload: addedDocument,
       });
     } catch (err) {
-      dispatchIfNotCancelled({ type: "ERROR", error: err });
+      dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
     }
   };
 
@@ -87,13 +87,10 @@ export const useFirestore = (nameCollection) => {
 
     try {
       const documentRef = doc(projectFirestore, nameCollection, id);
-      const deletedDocument = await deleteDoc(documentRef);
-      dispatchIfNotCancelled({
-        type: "DELETED_DOCUMENT",
-        payload: deletedDocument,
-      });
+      await deleteDoc(documentRef);
+      dispatchIfNotCancelled({ type: "DELETED_DOCUMENT" });
     } catch (err) {
-      dispatchIfNotCancelled({ type: "ERROR", error: "could not delete" });
+      dispatchIfNotCancelled({ type: "ERROR", payload: "could not delete" });
     }
   };
 

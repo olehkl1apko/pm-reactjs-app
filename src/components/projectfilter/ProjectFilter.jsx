@@ -1,13 +1,7 @@
 import { useState } from "react";
 
-const filterList = [
-  "all",
-  "mine",
-  "development",
-  "design",
-  "marketing",
-  "sales",
-];
+import "./ProjectFilter.css";
+import { filterList } from "../../constants";
 
 export default function ProjectFilter({ changeFilter }) {
   const [currentFilter, setCurrentFilter] = useState("all");

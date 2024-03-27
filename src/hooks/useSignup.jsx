@@ -1,17 +1,7 @@
 import { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {
-  collection,
-  onSnapshot,
-  query,
-  addDoc,
-  serverTimestamp,
-  where,
-  getDocs,
-  doc,
-  setDoc,
-} from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 import {
   projectAuth,
@@ -67,7 +57,6 @@ export const useSignup = () => {
               console.log("An error occurred while profile updating");
             });
 
-            // dispatch login action
             dispatch({ type: "LOGIN", payload: res.user });
 
             // create a user document

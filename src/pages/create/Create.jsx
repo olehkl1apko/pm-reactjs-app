@@ -2,20 +2,12 @@ import { useState, useEffect } from "react";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 
+import "./Create.css";
+import { categories } from "../../constants";
 import { Timestamp } from "../../firebase/config";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
-
-// styles
-import "./Create.css";
-
-const categories = [
-  { value: "development", label: "Development" },
-  { value: "design", label: "Design" },
-  { value: "sales", label: "Sales" },
-  { value: "marketing", label: "Marketing" },
-];
 
 export default function Create() {
   const navigate = useNavigate();
@@ -24,7 +16,6 @@ export default function Create() {
   const { documents } = useCollection("users");
   const [users, setUsers] = useState([]);
 
-  // form field values
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
   const [dueDate, setDueDate] = useState("");

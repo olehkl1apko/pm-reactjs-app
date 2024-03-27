@@ -1,20 +1,13 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
+import "./Error.css";
+
 export default function error() {
   const error = useRouteError();
 
   return (
     <>
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          gap: "40px",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div className="wrapper">
         <h1>Oops</h1>
         <p>
           {isRouteErrorResponse(error)

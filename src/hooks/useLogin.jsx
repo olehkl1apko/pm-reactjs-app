@@ -16,7 +16,6 @@ export const useLogin = () => {
     setIsPending(true);
 
     try {
-      // login
       const res = await signInWithEmailAndPassword(
         projectAuth,
         email,
@@ -27,7 +26,6 @@ export const useLogin = () => {
       const userDocRef = doc(projectFirestore, "users", res.user.uid);
       await updateDoc(userDocRef, { online: true });
 
-      // dispatch login action
       dispatch({ type: "LOGIN", payload: res.user });
 
       if (!isCancelled) {
