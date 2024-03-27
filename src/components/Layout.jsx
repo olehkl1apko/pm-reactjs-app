@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 
 import "../App.css";
-import { NavBar, OnlineUsers, SideBar } from "../components";
+import { NavBar, SideBar } from "../components";
+import OnlineUsers from "./onlineusers/OnlineUsers";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Layout() {
