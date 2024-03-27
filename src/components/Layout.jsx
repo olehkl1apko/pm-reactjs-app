@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import "../App.css";
-import { NavBar, SideBar } from "../components";
-import OnlineUsers from "./onlineusers/OnlineUsers";
+import { NavBar, SideBar, UserList } from "../components";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Layout() {
@@ -17,7 +16,7 @@ export default function Layout() {
             <NavBar />
             <Outlet />
           </div>
-          {user && <OnlineUsers />}
+          {user && <UserList />}
         </>
       )}
     </div>

@@ -1,6 +1,6 @@
 import Avatar from "./avatar/Avatar";
 import NavBar from "./navbar/Navbar";
-import OnlineUsers from "./onlineusers/OnlineUsers";
+import UserList from "./userlist/UserList";
 import ProjectComments from "./projectcomments/ProjectComments";
 import ProjectSummary from "./projectsummary/ProjectSummary";
 import ProjectFilter from "./projectfilter/ProjectFilter";
@@ -10,7 +10,7 @@ import SideBar from "./sidebar/Sidebar";
 export {
   Avatar,
   NavBar,
-  OnlineUsers,
+  UserList,
   ProjectComments,
   ProjectSummary,
   ProjectFilter,
