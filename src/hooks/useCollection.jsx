@@ -11,7 +11,7 @@ import {
 
 import { projectFirestore } from "../firebase/config";
 
-export const useCollection = (data, _query, _orderBy) => {
+export const useCollection = (nameCollection, _query, _orderBy) => {
   const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);
 
@@ -19,7 +19,7 @@ export const useCollection = (data, _query, _orderBy) => {
   const orderBy = useRef(_orderBy).current;
 
   useEffect(() => {
-    let ref = collection(projectFirestore, data);
+    let ref = collection(projectFirestore, nameCollection);
 
     if (query) {
       ref = ref.where(...query);

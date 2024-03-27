@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import Select from "react-select";
+import { useNavigate } from "react-router-dom";
+
+import { Timestamp } from "../../firebase/config";
+import { useFirestore } from "../../hooks/useFirestore";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { Timestamp } from "../../firebase/config";
-import Select from "react-select";
 
 // styles
 import "./Create.css";
@@ -15,7 +18,9 @@ const categories = [
 ];
 
 export default function Create() {
+  const navigate = useNavigate();
   const { user } = useAuthContext();
+  const { addDocument, response } = useFirestore("projects");
   const { documents } = useCollection("users");
   const [users, setUsers] = useState([]);
 
@@ -74,7 +79,10 @@ export default function Create() {
       comments: [],
     };
 
-    console.log(project);
+    await addDocument(project);
+    if (!response.error) {
+      navigate("/");
+    }
   };
 
   return (
