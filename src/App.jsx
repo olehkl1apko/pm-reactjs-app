@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 
 import Layout from "./components/Layout";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -18,11 +22,20 @@ function App() {
       element: <Layout />,
       errorElement: <ErrorPage />,
       children: [
-        { index: true, element: user && <Dashboard /> },
-        { path: "/create", element: user && <Create /> },
-        { path: "/projects/:id", element: user && <Project /> },
-        { path: "/login", element: !user && <Login /> },
-        { path: "/signup", element: !user && <Signup /> },
+        {
+          index: true,
+          element: user ? <Dashboard /> : <Navigate to="/login" />,
+        },
+        {
+          path: "/create",
+          element: user ? <Create /> : <Navigate to="/login" />,
+        },
+        {
+          path: "/projects/:id",
+          element: user ? <Project /> : <Navigate to="/login" />,
+        },
+        { path: "/login", element: !user ? <Login /> : <Navigate to="/" /> },
+        { path: "/signup", element: !user ? <Signup /> : <Navigate to="/" /> },
       ],
     },
   ]);
